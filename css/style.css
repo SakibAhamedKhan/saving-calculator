@@ -1,1 +1,15 @@
 /* Assignment - 5 */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+
+/* header part style  */
+.Web-heading{
+	color: #31A5AC;
+	font-weight: bold;
+	font-size: 48px;
+}
