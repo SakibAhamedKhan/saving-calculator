@@ -63,6 +63,8 @@ document.getElementById('calculate-button').addEventListener('click', function()
 		let totalExpenses = getInputValue('food')+getInputValue('rent')+getInputValue('cloth');
 		let totalBalance = getInputValue('income') - totalExpenses;
 		if(totalBalance<0){
+			setAmount('total-expenses', 0);
+			setAmount('total-balance', 0);
 			alert('Your Income: '+getInputValue('income')+'\nYour Expenses: '+totalExpenses+'\nSo, Your Expenses is more than your Income! Thats not possible!');
 		} else{
 			setAmount('total-expenses',totalExpenses);
