@@ -13,3 +13,16 @@ body{
 	font-weight: bold;
 	font-size: 48px;
 }
+
+/* calculation section */
+.input-field{
+	background-color: #DCDCDC;
+	border: none;
+	
+}
+.error-message{
+	text-align: center;
+	color: red;
+	font-size: 12px;
+	font-weight: bold;
+}
