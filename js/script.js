@@ -40,6 +40,7 @@ function getInputValue(idName){
 	return parseFloat(idDoc.value);
 }
 
+// Get Value from Text
 function getTextValue(idName){
 	const idDoc = document.getElementById(idName);
 	return parseFloat(idDoc.innerText);
@@ -62,7 +63,7 @@ document.getElementById('calculate-button').addEventListener('click', function()
 		let totalExpenses = getInputValue('food')+getInputValue('rent')+getInputValue('cloth');
 		let totalBalance = getInputValue('income') - totalExpenses;
 		if(totalBalance<0){
-			alert('Your Income: '+getInputValue('income')+'\nYour Expenses: '+totalExpenses+'\nSo, Your Expenses is more than your Income!');
+			alert('Your Income: '+getInputValue('income')+'\nYour Expenses: '+totalExpenses+'\nSo, Your Expenses is more than your Income! Thats not possible!');
 		} else{
 			setAmount('total-expenses',totalExpenses);
 			setAmount('total-balance', totalBalance);
@@ -77,6 +78,7 @@ document.getElementById('calculate-button').addEventListener('click', function()
 document.getElementById('save-button').addEventListener('click', function(){
 	const error1 = specialErrorSave('save');
 	
+	//check error in Save field
 	if(error1==false){
 		const error2 = getErrorFromInput('save');
 		if(error2==false){
@@ -84,22 +86,27 @@ document.getElementById('save-button').addEventListener('click', function(){
 			if(isNaN(balance)){	
 				alert('You Must Fill up the Income Field');
 
-			} else{
+			} 
+			else{
 				let savePercent = getInputValue('save');
 				let save = (balance/100)*savePercent;
 				setAmount('save-amount', save);
+				
 				if(getTextValue('total-expenses')==0){
 					let remaining = getInputValue('income') - save;
 					setAmount('remain-balance',remaining);
-				} else{
+				} 
+				else{
 					let remaining = getTextValue('total-balance') - save;
 					const errorId = document.getElementById('save-error');
+					
 					if(remaining<0){
-						errorId.innerText = '*Your balance is less than your saving';
-						document.getElementById('save').style.border = '3px solid red';
+						setAmount('save-amount', 0);
 						setAmount('remain-balance',0);
-					} else{
-						document.getElementById('save').style.border = 'none';
+						alert('Your Balance is: '+getTextValue('total-balance')+'\nYour Saving is: '+save+
+								'\nSo, Your Saving is more than Balance! Thats not possible!');
+					} 
+					else{
 						setAmount('remain-balance',remaining);
 					}
 					
